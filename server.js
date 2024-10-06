@@ -1,4 +1,3 @@
-// server.js
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
@@ -31,6 +30,11 @@ app.use(express.urlencoded({ extended: true })); // For parsing application/x-ww
 app.use("/api/orders", orderRoutes);
 app.use("/api/items", itemRoutes); // Use the item routes
 app.use("/uploads", express.static("uploads")); // Serve static files from the uploads folder
+
+// Define a route for the root URL
+app.get("/", (req, res) => {
+  res.send("Welcome to the My Perfume Backend API!");
+});
 
 // Start the server
 app.listen(PORT, () => {
